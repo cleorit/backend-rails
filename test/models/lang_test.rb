@@ -5,4 +5,5 @@ class LangTest < ActiveSupport::TestCase
     lang = Lang.new
     assert_raise { lang.save }
   end
+
 end

@@ -1,18 +1,23 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 pt1:
+  id: 1
   text: O gato esta no saco
   lang: pt_BR
 
 pt2:
+  id: 2
   text: A vida eh bela
   lang: pt_BR
-  previous: pt1
+  previous_id: 1
 
 en1:
+  id: 3
   text: Life is beautiful
   lang: en_US
 
 en2:
+  id: 4
   text: The cat is in the bag
   lang: en_US
+  previous_id: 3
