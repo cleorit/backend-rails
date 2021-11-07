@@ -1,7 +1,8 @@
 require "test_helper"
 
 class LangTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "cannot create empty language" do
+    lang = Lang.new
+    assert_raise { lang.save }
+  end
 end

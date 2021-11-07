@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 2021_11_07_131039) do
 
   create_table "langs", force: :cascade do |t|
-    t.string "code"
-    t.string "name"
+    t.string "code", null: false
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["code"], name: "index_langs_on_code", unique: true
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_11_07_131039) do
 
   create_table "sentences", force: :cascade do |t|
     t.string "text"
-    t.integer "previous_id", null: false
+    t.integer "previous_id"
     t.integer "lang_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
