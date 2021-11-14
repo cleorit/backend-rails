@@ -6,4 +6,10 @@ class Sentence < ApplicationRecord
 
   belongs_to :parent,   class_name: "Sentence", optional: true, inverse_of: :children
   has_many   :children, class_name: "Sentence", inverse_of: :parent, foreign_key: "parent_id"
+
+
+  def translations(code)
+    lang_id = Lang.where("code = ?", code).first.id
+    children.where('lang_id = ?', lang_id) 
+  end
 end

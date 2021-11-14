@@ -1,9 +1,25 @@
 class SentencesController < ApplicationController
 
-  before_action :set_language
-
   def index
+    set_language
     render json: @language
+  end
+  
+  def show
+    set_sentence
+    # render json: @sentence
+    
+    response = {
+      :lang => @sentence.lang.code,
+      :text => @sentence.text,
+      :votes => 0,
+    }
+
+    if params[:target] 
+      response[:translations] = @sentence.translations(params[:target]).map { |t| t.id }
+    end
+
+    render json: response
   end
   
   private
@@ -18,6 +34,6 @@ class SentencesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
   def sentence_params
-    params.require(:sentence).require(:lang).permit(:text, :user_id, :translation)
+    params.require(:sentence).require(:lang).permit(:text, :user_id, :translation, :target)
   end
 end
